@@ -45,6 +45,7 @@ export default function Home() {
     { id: 30, date: "30" },
     { id: 31, date: "31" },
   ]);
+  // sets entry array with a value so array can be added to
   const [entries, setEntries] = useState([{ day: -1, month: -1, year: -1 }]);
   const [showEntry, setShowEntry] = useState("");
   const [submitted, setSubmitted] = useState(false);

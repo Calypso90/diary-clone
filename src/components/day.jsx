@@ -12,9 +12,12 @@ function Day({
   submitted,
   setSubmitted,
 }) {
+  //copies array of all possible day values
   let days = dayArray;
+  //creates empty array to map through to set calendar
   let allDays = [];
 
+  // filters days array based on month value to return number of days in that month to allDays
   if (
     month === 1 &&
     ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0)
@@ -29,6 +32,7 @@ function Day({
   }
 
   function handleClick(e) {
+    // updates to the selected day
     let changeDay = "";
     if (e.target.textContent.includes("✉️")) {
       changeDay = e.target.textContent.slice(2);
@@ -38,8 +42,10 @@ function Day({
       setDay(Number(changeDay));
     }
 
+    // creates an array of all day divs
     let parentArray = e.target.parentElement.children;
 
+    // loops through day divs to change class of selected day
     for (let i = 0; i < parentArray.length; i++) {
       if (parentArray[i].className === "selected-day-box") {
         e.target.parentElement.children[i].className = "day-box";
@@ -47,6 +53,7 @@ function Day({
     }
     e.target.className = "selected-day-box";
 
+    // updates the entry text box based on selected day
     for (let i = 0; i < entries.length; i++) {
       if (
         entries[i].day === day &&

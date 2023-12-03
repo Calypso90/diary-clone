@@ -12,6 +12,7 @@ function EntryBox({
   submitted,
   setSubmitted,
 }) {
+  //creates an object after submission and adds it to entries array
   function handleSubmit(e) {
     e.preventDefault();
     let message = e.target[0].value;

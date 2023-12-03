@@ -1,6 +1,7 @@
 "use client";
 
 function Month({ month, setMonth }) {
+  // array of months uses month value to pull index value for return
   let months = [
     "January",
     "February",
@@ -16,12 +17,14 @@ function Month({ month, setMonth }) {
     "December",
   ];
 
+  // increments value of month
   function monthIncrement() {
     if (month < 11) {
       setMonth(month + 1);
     }
   }
 
+  // decrements value of month
   function monthDecrement() {
     if (month > 0) {
       setMonth(month - 1);
