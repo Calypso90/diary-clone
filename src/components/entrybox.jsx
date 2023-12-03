@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
 
-// ✉️
-
 function EntryBox({
   month,
   year,
@@ -11,15 +9,23 @@ function EntryBox({
   setEntries,
   showEntry,
   setShowEntry,
+  submitted,
+  setSubmitted,
 }) {
   function handleSubmit(e) {
     e.preventDefault();
     let message = e.target[0].value;
 
-    let entry = { id: `${month}${day}${year}`, message: message };
+    setSubmitted(true);
 
-    let entriesCopy = entries.map((e) => {
-      if (e.id === entry.id) {
+    let entry = { day: day, month: month, year: year, message: message };
+
+    entries.map((e) => {
+      if (
+        e.day === entry.day &&
+        e.month === entry.month &&
+        e.year === entry.year
+      ) {
         setEntries([...entries]);
       } else {
         setEntries([...entries, entry]);
@@ -29,14 +35,16 @@ function EntryBox({
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="entryBox">
+      <form onSubmit={(e) => handleSubmit(e)} className="entryBox">
         <label className="label">Dear Diary:</label>
         <textarea
           onChange={(e) => setShowEntry(e.target.value)}
           className="inputBox"
           value={showEntry}
         ></textarea>
-        <button className="submitButton">SUBMIT</button>
+        <button className={submitted ? "hiddenButton" : "submitButton"}>
+          SUBMIT
+        </button>
       </form>
     </div>
   );
