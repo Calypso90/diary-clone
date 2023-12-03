@@ -45,11 +45,10 @@ export default function Home() {
     { id: 30, date: "30" },
     { id: 31, date: "31" },
   ]);
-  const [entries, setEntries] = useState([{ id: 0 }]);
+  const [entries, setEntries] = useState([{ day: -1, month: -1, year: -1 }]);
   const [showEntry, setShowEntry] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  console.log(entries);
   return (
     <main>
       <div>

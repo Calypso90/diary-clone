@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-// ✉️
-
 function Day({
   month,
   year,
@@ -33,7 +31,7 @@ function Day({
   function handleClick(e) {
     let changeDay = "";
     if (e.target.textContent.includes("✉️")) {
-      changeDay = e.target.textContent.slice(1);
+      changeDay = e.target.textContent.slice(2);
       setDay(Number(changeDay));
     } else {
       changeDay = e.target.textContent;
@@ -56,7 +54,7 @@ function Day({
         entries[i].year === year
       ) {
         setShowEntry(entries[i].message);
-        break;
+        console.log(entries[i].message);
       } else {
         setShowEntry("");
       }
@@ -90,7 +88,6 @@ function Day({
               className={d.id !== day ? "day-box" : "selected-day-box"}
               key={d.id}
             >
-              {d.date}
               {entries.some(
                 (object) =>
                   object.day === d.id &&
@@ -100,6 +97,7 @@ function Day({
               )
                 ? "✉️"
                 : null}
+              {d.date}
             </div>
           );
         })}
